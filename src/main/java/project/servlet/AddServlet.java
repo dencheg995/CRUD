@@ -23,7 +23,8 @@ public class AddServlet extends HttpServlet {
             DBService dbService = new DBService();
             long id = dbService.addUser(name,age);
             User profile = dbService.getUser(id);
-            resp.getWriter().println(profile.getName());
+            resp.sendRedirect("/list");
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

@@ -14,7 +14,10 @@ public class User {
         this.name = name;
     }
 
-    public User() {
+    public User(long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
     }
 
     public List<User> getUserList() {

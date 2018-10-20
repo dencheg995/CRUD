@@ -7,7 +7,7 @@ import project.UserDataSet.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class UserDAO {
    private Executor executor;
@@ -31,16 +31,11 @@ public class UserDAO {
         });
     }
 
-    public List<User> getUsersList() throws SQLException {
-        List<User> list = new ArrayList<>();
-        User user = new User();
+    public ArrayList<User> getUsersList() throws SQLException {
+        ArrayList<User> list = new ArrayList<>();
         return executor.execQuery("select * from users", result -> {
             while(result.next()) {
-                user.setId(result.getLong("id"));
-                user.setName(result.getString("user_name"));
-                user.setAge(result.getInt("user_age"));
-                list.add(user);
-                //list.add(new User(result.getLong(1), result.getString(2)));
+                list.add(new User(result.getLong(1), result.getString(2), result.getInt(3)));
             }
             return list;
         } );

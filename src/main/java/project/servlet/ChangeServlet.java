@@ -26,5 +26,7 @@ public class ChangeServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        resp.sendRedirect("/list");
     }
 }

@@ -1,13 +1,15 @@
 package project;
 
-import org.h2.jdbcx.JdbcDataSource;
+;
 import project.UserDataSet.User;
 import project.dao.UserDAO;
 
+import java.sql.Array;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBService {
@@ -23,7 +25,7 @@ public class DBService {
         return (new UserDAO(connection).getUser(id));
     }
 
-    public List<User> getUsers() throws SQLException {
+    public ArrayList<User> getUsers() throws SQLException {
         return (new UserDAO(connection)).getUsersList();
     }
 
@@ -86,7 +88,6 @@ public class DBService {
         String connectionString = "jdbc:mysql://" + "localhost" + ":" + "3306" + "/" + "db_users" + "?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";;
         //Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(connectionString, "root", "denis080412");
-
         return connection;
     }
 }
