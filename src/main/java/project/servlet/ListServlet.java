@@ -2,6 +2,7 @@ package project.servlet;
 
 import project.DBService;
 import project.UserDataSet.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 @WebServlet(urlPatterns = "/list")
 public class ListServlet extends HttpServlet {
 
-    DBService dbService;
+        DBService dbService;
 
     {
         try {

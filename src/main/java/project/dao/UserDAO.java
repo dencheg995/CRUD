@@ -45,8 +45,8 @@ public class UserDAO {
        executor.execUpadate("insert into users (user_name, user_age) values('" + name + "',"+ age +")");
    }
 
-   public void removeUser(String name) throws SQLException {
-       executor.execUpadate("delete from users where user_name ='" + name + "'");
+   public void removeUser(long id) throws SQLException {
+       executor.execUpadate("delete from users where id ='" + id + "'");
    }
 
     public void createTable() throws SQLException {

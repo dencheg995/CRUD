@@ -54,11 +54,11 @@ public class DBService {
       }
     }
 
-    public void removeUser(String name)  {
+    public void removeUser(long id)  {
         try {
             connection.setAutoCommit(false);
             UserDAO dao = new UserDAO(connection);
-            dao.removeUser(name);
+            dao.removeUser(id);
             connection.commit();
         } catch (SQLException e) {
             try {

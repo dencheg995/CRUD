@@ -19,6 +19,8 @@ public class AddServlet extends HttpServlet {
         String name = req.getParameter("name");
         int age = Integer.parseInt(req.getParameter("age"));
 
+
+
         try {
             DBService dbService = new DBService();
             long id = dbService.addUser(name,age);

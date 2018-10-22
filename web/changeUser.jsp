@@ -11,11 +11,11 @@
     <title>TitleChange</title>
 </head>
 <body>
-<form action="/Change-User" method = post>
-    id: <input type="text" name="id">
-    New_Name: <input type = "text" name = "name">
+<form action="/changeUser" method = post>
+    id: <input type="text"  name="idChange" value="${idChange}">
+    New_Name: <input type = "text" name = "nameChange" value="${nameChange}">
     <br>
-    New_Age: <input type = "text" name = "age">
+    New_Age: <input type = "text" name = "ageChange" value="${ageChange}">
     <br>
     <input type = "submit" value = "Change User">
 </form>

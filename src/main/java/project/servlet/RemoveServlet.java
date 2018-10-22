@@ -1,5 +1,6 @@
 package project.servlet;
 
+
 import project.DBService;
 
 import javax.servlet.ServletException;
@@ -8,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 import java.sql.SQLException;
-import java.util.Date;
 
 @WebServlet(urlPatterns = "/Remove-User")
 public class RemoveServlet extends HttpServlet {
-    Date data = new Date();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
+        long id = Long.valueOf(req.getParameter("id"));
+
         try {
             DBService dbService = new DBService();
-            dbService.removeUser(name);
+            dbService.removeUser(id);
             resp.getWriter().println("Removed succseful");
             resp.sendRedirect("/list");
         } catch (SQLException e) {
@@ -28,5 +27,7 @@ public class RemoveServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+
     }
 }

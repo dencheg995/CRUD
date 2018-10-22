@@ -26,15 +26,30 @@
                 <td> ${user.id} </td>
                 <td><c:out value="${user.name}" /></td>
                 <td><c:out value="${user.age}" /></td>
+                <td><form action="/changeUser" method="get">
+                <td> <input type="hidden" name="idChange" value="${user.id}"/> </td>
+                <td> <input type="hidden" name="nameChange" value="${user.name}"/> </td>
+                <td> <input type="hidden" name="ageChange" value="${user.age}"/> </td>
+                <td> <input type = "submit" value = "Change User"> </td>
+                </form>
+                </td>
+                <td><form action="/Remove-User" method="post">
+                <td> <input type="hidden" name="id" value="${user.id}"/> </td>
+                <td> <input type = "submit" value = "Remove User"> </td>
+                </form>
+                </td>
+                <%--<td> <a href = "changeUser.jsp"> Change User</a></td>--%>
+
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <a href = "AddUser.jsp"> Add User</a>
     <br>
-    <a href = "removeUser.jsp"> Remove User</a>
-    <br>
-    <a href = "changeUser.jsp"> Change User</a>
+    <form action="AddUser.jsp">
+        <input type="submit" value="Add User">
+    </form>
+    <%--<a href = "AddUser.jsp"> Add User</a>--%>
+
 </div>
 
 </body>

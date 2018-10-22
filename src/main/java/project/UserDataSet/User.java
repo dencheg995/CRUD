@@ -1,12 +1,13 @@
 package project.UserDataSet;
 
-import java.util.List;
+
 
 public class User {
+
     private long id;
     private String name;
     private int age;
-    private List<User> userList;
+
 
 
     public User(long id, String name) {
@@ -20,13 +21,14 @@ public class User {
         this.age = age;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public User() {
     }
+
 
     public long getId() {
         return id;
