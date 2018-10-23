@@ -1,7 +1,7 @@
 package project.servlet;
 
 
-import project.DBService;
+import project.DBServise;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,17 +16,9 @@ public class RemoveServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long id = Long.valueOf(req.getParameter("id"));
-
-        try {
-            DBService dbService = new DBService();
-            dbService.removeUser(id);
-            resp.getWriter().println("Removed succseful");
-            resp.sendRedirect("/list");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        DBServise dbServise = new DBServise();
+        dbServise.removeUser(id);
+        resp.sendRedirect("/list");
 
 
     }

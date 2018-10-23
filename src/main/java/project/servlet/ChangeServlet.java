@@ -1,9 +1,8 @@
 package project.servlet;
 
-import project.DBService;
-import project.UserDataSet.User;
+import project.DBHelper;
+import project.DBServise;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 @WebServlet(urlPatterns = "/changeUser")
 public class ChangeServlet extends HttpServlet {
@@ -20,18 +18,9 @@ public class ChangeServlet extends HttpServlet {
         Long id = Long.valueOf(req.getParameter("idChange"));
         String name = req.getParameter("nameChange");
         int age = Integer.parseInt(req.getParameter("ageChange"));
-
-
-        try {
-            DBService dbService = new DBService();
-            dbService.changeUser(id, name, age);
-            resp.getWriter().println("You just changed the whole world:D");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        resp.sendRedirect("/list");
+            DBServise dbServise = new DBServise();
+            dbServise.changeUser(id, name, age);
+            resp.sendRedirect("/list");
 
 
     }
