@@ -9,7 +9,7 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
 
-        <mapping class="project.UserDataSet.User"/>
-        <mapping class="project.UserDataSet.UsersEntity"/>
+        <mapping class="project.module.User"/>
+        <mapping class="project.module.UsersEntity"/>
     </session-factory>
 </hibernate-configuration>

@@ -33,14 +33,11 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
-        <!-- MySQL connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.11</version>
         </dependency>
-        <!-- Hibernate 5.2.6 Final -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>

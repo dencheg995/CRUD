@@ -1,31 +1,32 @@
 package project.dao;
 
 
-import project.DBHelper;
-import project.UserDataSet.UsersEntity;
+import project.service.DBHelper;
+import project.module.UsersEntity;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class UserDAOHibernate {
+public class UserDAOHibernate implements UserDAO {
     private  EntityManager em;
 
 
     public UserDAOHibernate() {
-       this.em = DBHelper.getEmf();
+        em = DBHelper.getInstance().getEmf().createEntityManager();
     }
 
     public UsersEntity getUser(long id) {
         return em.find(UsersEntity.class, id);
     }
 
-    public long addUser(String name, int age) {
-        UsersEntity user = new UsersEntity(name, age);
+    public long addUser(UsersEntity usersEntity) {
         em.getTransaction().begin();
-        em.persist(user);
+        if(!em.contains(usersEntity)) {
+            em.persist(usersEntity);
+            em.flush();
+        }
         em.getTransaction().commit();
-
-        return user.getId();
+        return usersEntity.getId();
     }
 
     public void removeUser(long id) {
@@ -33,31 +34,26 @@ public class UserDAOHibernate {
         em.getTransaction().begin();
         em.remove(user);
         em.getTransaction().commit();
-
     }
 
     public List<UsersEntity> listUser() {
         return em.createQuery("from UsersEntity").getResultList();
     }
 
-    public void changeUser(long id, String newName, int newAge) {
-        UsersEntity usersEntity = em.find(UsersEntity.class, id);
+    public void changeUser(UsersEntity usersEntity) {
         em.getTransaction().begin();
-        usersEntity.setName(newName);
-        usersEntity.setAge(newAge);
-        em.persist(usersEntity);
+        em.merge(usersEntity);
         em.getTransaction().commit();
-        em.close();
+
     }
 
-    public UsersEntity registrUser(String name, int age, String login, String password, String role) {
-        UsersEntity entity = new UsersEntity(name, age, login, password, role);
-
-        em.getTransaction().begin();
-        em.persist(entity);
-        em.getTransaction().commit();
-        em.close();
-        return entity;
+    public void registrUser(UsersEntity usersEntity) {
+            em.getTransaction().begin();
+            if(!em.contains(usersEntity)) {
+                em.persist(usersEntity);
+                em.flush();
+            }
+            em.getTransaction().commit();
     }
 
     public UsersEntity getUserWithLogin(String login) {

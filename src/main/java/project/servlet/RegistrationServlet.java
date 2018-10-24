@@ -1,8 +1,8 @@
 package project.servlet;
 
-import project.DBServise;
-import project.UserDataSet.UsersEntity;
-import sun.jvm.hotspot.opto.HaltNode;
+import project.service.UserServise;
+import project.module.UsersEntity;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 @WebServlet(urlPatterns = "/register")
 public class RegistrationServlet extends HttpServlet {
@@ -21,8 +21,9 @@ public class RegistrationServlet extends HttpServlet {
         String pass = req.getParameter("password");
         String name = req.getParameter("name");
         int age = Integer.parseInt(req.getParameter("age"));
-        DBServise dbServise = new DBServise();
-        UsersEntity profile = dbServise.registrUser(name, age, login, pass, "User");
+        UserServise userServise = new UserServise();
+        UsersEntity profile = new UsersEntity(name, age, login, pass, "User");
+        userServise.registrUser(profile);
         if(profile!=null) {
             resp.sendRedirect("user.jsp");
         }

@@ -1,4 +1,4 @@
-package project.Executor;
+package project.service.Executor;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

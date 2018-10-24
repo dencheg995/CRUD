@@ -1,7 +1,7 @@
 package project.servlet;
 
-import project.DBServise;
-import project.UserDataSet.UsersEntity;
+import project.service.UserServise;
+import project.module.UsersEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +18,8 @@ public class LoginServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         HttpSession session = req.getSession(true);
-        DBServise dbServise = new DBServise();
-        UsersEntity profile = dbServise.getUserLogin(login);
+        UserServise userServise = new UserServise();
+        UsersEntity profile = userServise.getUserLogin(login);
         if(login != null && password!= null && profile.getPassword().equals(password)) {
             if (profile.getRole().equals("User")) {
                 session.setAttribute("userName", profile.getName());
@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect("forAuthorizingUser.jsp");
                 return;
             }
-
 
             if (profile.getRole().equals("Admin")) {
                 session.setAttribute("userRole", profile.getRole());

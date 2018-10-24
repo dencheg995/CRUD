@@ -1,4 +1,4 @@
-package project.UserDataSet;
+package project.module;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -6,8 +6,15 @@ import java.util.Objects;
 @Entity
 @Table(name = "users", schema = "db_users", catalog = "")
 public class UsersEntity {
+    @Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue
     private long id;
+    @Basic
+    @Column(name = "name")
     private String name;
+    @Basic
+    @Column(name = "age")
     private int age;
     @Column(name = "role")
     private String role;
@@ -15,6 +22,8 @@ public class UsersEntity {
     private String login;
     @Column(name = "password")
     private String password;
+
+
 
     public UsersEntity(String login, String password) {
         this.login = login;
@@ -28,6 +37,9 @@ public class UsersEntity {
         this.login = login;
         this.password = password;
     }
+
+
+
 
     public void setAge(int age) {
         this.age = age;
@@ -54,9 +66,7 @@ public class UsersEntity {
         this.age = userAge;
     }
 
-    public UsersEntity(long id) {
-        this.id = id;
-    }
+
 
     public UsersEntity() {
     }
@@ -69,8 +79,7 @@ public class UsersEntity {
         this.role = role;
     }
 
-    @Id
-    @Column(name = "id", nullable = false)
+
     public long getId() {
         return id;
     }
@@ -79,8 +88,7 @@ public class UsersEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "user_name")
+
     public String getName() {
         return name;
     }
@@ -89,8 +97,7 @@ public class UsersEntity {
         this.name = userName;
     }
 
-    @Basic
-    @Column(name = "user_age")
+
     public int getAge() {
         return age;
     }
@@ -98,6 +105,7 @@ public class UsersEntity {
     public void setAge(Integer userAge) {
         this.age = userAge;
     }
+
 
     @Override
     public boolean equals(Object o) {
