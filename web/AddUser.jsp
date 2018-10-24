@@ -13,7 +13,19 @@
 <body>
 <form action="/Add-User" method = post>
     Name: <input type = "text" name = "name">
+    <br>
+    <br>
     Age: <input type = "text" name = "age">
+    <br>
+    <br>
+    login: <input type="text", name="login">
+    <br>
+    <br>
+    pass: <input type="text", name="password">
+    <br>
+    <br>
+    Role: <input type="text", name="role">
+    <br>
     <input type = "submit" value = "Add User">
 </form>
 </body>

@@ -30,6 +30,8 @@
                 <td> <input type="hidden" name="idChange" value="${user.id}"/> </td>
                 <td> <input type="hidden" name="nameChange" value="${user.name}"/> </td>
                 <td> <input type="hidden" name="ageChange" value="${user.age}"/> </td>
+                <td> <input type="hidden" name="loginChange" value="${user.login}"/> </td>
+                <td> <input type="hidden" name="passwordChange" value="${user.password}"/> </td>
                 <td> <input type = "submit" value = "Change User"> </td>
                 </form>
                 </td>

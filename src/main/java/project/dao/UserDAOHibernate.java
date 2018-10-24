@@ -43,6 +43,7 @@ public class UserDAOHibernate implements UserDAO {
     public void changeUser(UsersEntity usersEntity) {
         em.getTransaction().begin();
         em.merge(usersEntity);
+        em.flush();
         em.getTransaction().commit();
 
     }
